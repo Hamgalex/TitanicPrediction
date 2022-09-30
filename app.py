@@ -17,8 +17,11 @@ st.dataframe(train)
 st.dataframe(test)
 
 # contar cuantos sobrevivieron
-# num_sobrevivientes = train.Survived.value_counts().to_list()
-# st.write(num_sobrevivientes)
+num_sobrevivientes = test.Survived.value_counts().to_list()
 
-
+# graficar
+fig = plt.figure(figsize = (10, 5))
+plt.bar(["Female","Male"], num_sobrevivientes)
+plt.title("Survivors per Sex") 
+st.pyplot(fig)
 
