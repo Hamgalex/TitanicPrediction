@@ -12,8 +12,11 @@ train = pd.read_csv("datasets/train.csv",encoding='utf-8')
 # mergear los csv's
 test=pd.merge(test,gender_submission,on="PassengerId", how="left")
 
-st.dataframe(gender_submission)
+
+st.title("Titanic Survivor Analysis")
+st.header("Train data")
 st.dataframe(train)
+st.header("Test data")
 st.dataframe(test)
 
 # contar cuantos sobrevivieron
@@ -21,7 +24,9 @@ num_sobrevivientes = test.Survived.value_counts().to_list()
 
 # graficar
 fig = plt.figure(figsize = (10, 5))
-plt.bar(["Female","Male"], num_sobrevivientes)
+plt.bar(["Female","Male"], num_sobrevivientes, color=['pink','lightskyblue'])
 plt.title("Survivors per Sex") 
+
+st.header("Number of survivors of the titanic per Sex")
 st.pyplot(fig)
 
